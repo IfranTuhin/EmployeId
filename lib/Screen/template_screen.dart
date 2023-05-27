@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:employe_id/Provider/data_controller.dart';
 import 'package:employe_id/Screen/all_thumb_screen.dart';
 import 'package:employe_id/constents.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 class TemplateScreen extends StatefulWidget {
   const TemplateScreen({Key? key}) : super(key: key);
@@ -43,6 +45,10 @@ class _TemplateScreenState extends State<TemplateScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    // Data Controller provider
+    final controller = Provider.of<DataController>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -452,22 +458,23 @@ class _TemplateScreenState extends State<TemplateScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AllThumbScreen(
-                              userCompanyName: companyNameController.text,
-                              userImage: imageFile,
-                              userName: yourNameController.text,
-                              userJobPosition: jobPositionController.text,
-                              userIdNo: idNumberController.text,
-                              userBlood: bloodGroupController.text,
-                              userPhone: phoneNumberController.text,
-                              userEmail: emailAddressController.text,
-                              userTerm1: term1Controller.text,
-                              userTerm2: term2Controller.text,
-                              userJoinDate: joinFinalDate,
-                              userExpireDate: expireFinalDate,
-                            ),
+                            builder: (context) => AllThumbScreen(),
                           ),
                         );
+                        //
+                        controller.userImage = imageFile;
+                        controller.userCompanyName = companyNameController.text;
+                        controller.userName = yourNameController.text;
+                        controller.userJobPosition = jobPositionController.text;
+                        controller.userIdNo =  idNumberController.text;
+                        controller.userBlood = bloodGroupController.text;
+                        controller.userPhone = phoneNumberController.text;
+                        controller.userEmail = emailAddressController.text;
+                        controller.userTerm1 = term1Controller.text;
+                        controller.userTerm2 = term2Controller.text;
+                        controller.userJoinDate = joinFinalDate;
+                        controller.userExpireDate = expireFinalDate;
+
                       } else {
                         Fluttertoast.showToast(
                             msg: "Please fill all required fields",
