@@ -475,12 +475,12 @@ class _Template1 extends State<Template1> {
   // Converting the image to pdf
   convertImageToPdf() async {
     // var  convertFrontPartImage = PdfImage.file(pdf.document, bytes: ( _frontPartImage!.buffer.asUint8List()));
-    final convertFrontPartImage = pw.MemoryImage(_frontPartImage.readAsBytesSync());
+    // final convertFrontPartImage = pw.MemoryImage(_frontPartImage.readAsBytesSync());
     pdf.addPage(
       pw.Page(
         pageFormat: PdfPageFormat.a4,
         build: (pw.Context context) {
-          return pw.Center(child: pw.Image(convertFrontPartImage));
+           return pw.Center();
         },
       ),
     );
