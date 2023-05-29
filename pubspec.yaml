@@ -40,9 +40,10 @@ dependencies:
   fluttertoast: ^8.2.1
   provider: ^6.0.5
   flutter_polygon: ^0.3.0+2
-  universal_html: ^2.2.2
   pdf: ^3.8.4
-  html: ^0.15.3
+  screenshot: ^2.1.0
+  image: ^4.0.17
+  path_provider: ^2.0.15
 
 dev_dependencies:
   flutter_test:
